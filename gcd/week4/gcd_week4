@@ -1,0 +1,134 @@
+﻿__ACTIVITY2__
+-user-
+
+CREATE TABLE user (id INT, age INT, gender STRING, occupation STRING, zipcode INT)
+
+ROW FORMAT DELIMITED
+
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+
+
+
+-item-
+
+
+cut -d'|' –f3,4,17,18,19 u.item > movies
+
+
+
+CREATE TABLE ml_item (movie_id INT, movie_title STRING, release_date STRING, video_release_date STRING, imdb_url STRING, unknown INT, action INT, adventure INT, animation INT, children INT, comedy INT, crime INT, documentary INT, drama INT, fantasy INT, film_noir INT, horror INT, musical INT, mystery INT, romance INT, sci_fi INT, thriller INT, war INT, western INT)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|' STORED AS TEXTFILE;
+
+
+
+LOAD DATA INPATH 'u.item' OVERWRITE INTO TABLE ml_item;
+
+
+
+-data-
+
+
+CREATE TABLE ml_data (user_id INT, item_id INT, rating INT, timestamp INT)
+
+ROW FORMAT DELIMITED
+
+FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE;
+
+
+
+LOAD DATA INPATH 'u.data' OVERWRITE INTO TABLE ml_data;
+
+
+
+__ACTIVITY3__
+
+
+-1-
+
+SELECT gender, COUNT(gender) AS totalUsersGender FROM user GROUP BY gender;
+
+F	273
+M	670
+
+
+
+-2-
+
+SELECT occupation, SUM(CASE WHEN gender ='M' THEN 1 ELSE 0 END) AS totalMaleOccupations, SUM(CASE WHEN gender ='M' THEN 1 ELSE 0 END) AS totalFemaleOccupations
+FROM user GROUP BY occupation;
+
+administrator	43	43
+
+artist	15	15
+
+doctor	7	7
+
+educator	69	69
+
+engineer	65	65
+
+entertainment	16	16
+
+executive	29	29
+healthcare	5	5
+
+homemaker	1	1
+
+lawyer	10	10
+
+librarian	22	22
+
+marketing	16	16
+
+none	5	5
+
+other	69	69
+
+programmer	60	60
+
+retired	13	13
+
+salesman	9	9
+
+scientist	28	28
+
+student	136	136
+
+technician	26	26
+
+writer	26	26
+
+
+
+-3-
+
+SELECT m.movie_title, SUM(d.rating) AS avgrat, COUNT(d.rating) AS counter
+ from ml_data d
+ JOIN ml_item m ON(d.item_id = m.movie_id)
+ JOIN user u ON (d.user_id = u.id) WHERE u.gender = 'F'
+ GROUP BY m.movie_title
+ ORDER BY avgrat DESC, counter DESC limit 1;
+
+
+Star Wars (1977)	641	151
+
+
+
+
+__ACTIVITY4__
+
+The wont give an accurate example in this.
+
+
+
+__ACTIVITY5__
+
+How do you calculate the vote displayed on a film or show page?
+We take all the individual
+ votes cast by IMDb registered users and use them to calculate a single rating. We don't use the
+ arithmetic mean of the votes (although we do display the mean and average votes on the votes breakdown)
+ -- the rating displayed on a film's page is a weighted average. To display the detailed votes breakdown,
+ click on the 'More' link located below the existing user rating. For an example, see here.
