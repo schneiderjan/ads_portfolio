@@ -11,9 +11,12 @@ def file_contents(file_name):
         f.close()
 datasource = dict((file_name, file_contents(file_name)) for file_name in all_files)
 
+
 def mapfn(k, v):
+    from stopwords import allStopWords
     for w in v.split():
-        yield w, 1
+	     if w not in allStopWords:
+	         yield w, 1
 
 def reducefn(k, vs):
     result = 0
