@@ -1,6 +1,8 @@
 import mincemeat
 import glob
+import time
 
+t0 = time.time()
 
 all_files = glob.glob("GutenbergSF/*.*")
 def file_contents(file_name):
@@ -15,15 +17,17 @@ datasource = dict((file_name, file_contents(file_name)) for file_name in all_fil
 def mapfn(k, v):
     from stopwords import allStopWords
     for w in v.split():
-	     if w not in allStopWords:
-	         yield w, 1
+        if w in allStopWords or len(w)==1:
+            yield w, 0
+        else:
+            yield w, 1
 
 def reducefn(k, vs):
     result = 0
     for v in vs:
         result += v
     return result
-	
+
 s = mincemeat.Server()
 
 s.datasource = datasource
@@ -38,5 +42,8 @@ i = open('outfile.txt','w')
 i.write(str(results))
 i.close()
 
-
+t1 = time.time()
+total = t1-t0
+j = open('time.txt', 'w') 
+j.write(str(total))
 print(results)
