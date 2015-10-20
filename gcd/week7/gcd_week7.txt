@@ -1,0 +1,309 @@
+###Assignment1 
+
+#2
+[cloudera@quickstart ~]$ mongoimport --db scratch --collection zips --file zips.json
+mongoimport: /usr/lib64/libcrypto.so.10: no version information available (required by mongoimport)
+mongoimport: /usr/lib64/libssl.so.10: no version information available (required by mongoimport)
+2015-10-20T13:48:32.731-0700	connected to: localhost
+2015-10-20T13:48:34.872-0700	imported 29353 documents
+
+#3
+> show dbs
+local         0.078GB
+scratch       0.078GB
+twitter_test  0.078GB
+> use scratch
+switched to db scratch
+> show collections
+system.indexes
+zips
+> db.zips.find({})
+{ "_id" : "01001", "city" : "AGAWAM", "loc" : [ -72.622739, 42.070206 ], "pop" : 15338, "state" : "MA" }
+{ "_id" : "01002", "city" : "CUSHMAN", "loc" : [ -72.51565, 42.377017 ], "pop" : 36963, "state" : "MA" }
+{ "_id" : "01005", "city" : "BARRE", "loc" : [ -72.108354, 42.409698 ], "pop" : 4546, "state" : "MA" }
+{ "_id" : "01007", "city" : "BELCHERTOWN", "loc" : [ -72.410953, 42.275103 ], "pop" : 10579, "state" : "MA" }
+{ "_id" : "01008", "city" : "BLANDFORD", "loc" : [ -72.936114, 42.182949 ], "pop" : 1240, "state" : "MA" }
+{ "_id" : "01010", "city" : "BRIMFIELD", "loc" : [ -72.188455, 42.116543 ], "pop" : 3706, "state" : "MA" }
+{ "_id" : "01011", "city" : "CHESTER", "loc" : [ -72.988761, 42.279421 ], "pop" : 1688, "state" : "MA" }
+{ "_id" : "01012", "city" : "CHESTERFIELD", "loc" : [ -72.833309, 42.38167 ], "pop" : 177, "state" : "MA" }
+{ "_id" : "01013", "city" : "CHICOPEE", "loc" : [ -72.607962, 42.162046 ], "pop" : 23396, "state" : "MA" }
+{ "_id" : "01020", "city" : "CHICOPEE", "loc" : [ -72.576142, 42.176443 ], "pop" : 31495, "state" : "MA" }
+{ "_id" : "01022", "city" : "WESTOVER AFB", "loc" : [ -72.558657, 42.196672 ], "pop" : 1764, "state" : "MA" }
+{ "_id" : "01026", "city" : "CUMMINGTON", "loc" : [ -72.905767, 42.435296 ], "pop" : 1484, "state" : "MA" }
+{ "_id" : "01027", "city" : "MOUNT TOM", "loc" : [ -72.679921, 42.264319 ], "pop" : 16864, "state" : "MA" }
+{ "_id" : "01028", "city" : "EAST LONGMEADOW", "loc" : [ -72.505565, 42.067203 ], "pop" : 13367, "state" : "MA" }
+{ "_id" : "01030", "city" : "FEEDING HILLS", "loc" : [ -72.675077, 42.07182 ], "pop" : 11985, "state" : "MA" }
+{ "_id" : "01031", "city" : "GILBERTVILLE", "loc" : [ -72.198585, 42.332194 ], "pop" : 2385, "state" : "MA" }
+{ "_id" : "01032", "city" : "GOSHEN", "loc" : [ -72.844092, 42.466234 ], "pop" : 122, "state" : "MA" }
+{ "_id" : "01033", "city" : "GRANBY", "loc" : [ -72.520001, 42.255704 ], "pop" : 5526, "state" : "MA" }
+{ "_id" : "01034", "city" : "TOLLAND", "loc" : [ -72.908793, 42.070234 ], "pop" : 1652, "state" : "MA" }
+{ "_id" : "01035", "city" : "HADLEY", "loc" : [ -72.571499, 42.36062 ], "pop" : 4231, "state" : "MA" }
+Type "it" for more
+
+#4a
+
+> db.zips.find().count()
+29353
+> db.zips.find({"city":"FLAGSTAFF"}).count()
+2
+> db.zips.find({"city":"FLAGSTAFF"}).explain()
+{
+	"queryPlanner" : {
+		"plannerVersion" : 1,
+		"namespace" : "scratch.zips",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"city" : {
+				"$eq" : "FLAGSTAFF"
+			}
+		},
+		"winningPlan" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"city" : {
+					"$eq" : "FLAGSTAFF"
+				}
+			},
+			"direction" : "forward"
+		},
+		"rejectedPlans" : [ ]
+	},
+	"serverInfo" : {
+		"host" : "quickstart.cloudera",
+		"port" : 27017,
+		"version" : "3.0.6",
+		"gitVersion" : "1ef45a23a4c5e3480ac919b28afcba3c615488f2"
+	},
+	"ok" : 1
+}
+
+
+#4b
+> db.zips.ensureIndex({"city" : 1})
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 1,
+	"numIndexesAfter" : 2,
+	"ok" : 1
+}
+> db.zips.find().count()
+29353
+> db.zips.find({"city":"FLAGSTAFF"}).count()
+2
+> db.zips.find({"city":"FLAGSTAFF"}).explain()
+{
+	"queryPlanner" : {
+		"plannerVersion" : 1,
+		"namespace" : "scratch.zips",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"city" : {
+				"$eq" : "FLAGSTAFF"
+			}
+		},
+		"winningPlan" : {
+			"stage" : "FETCH",
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"keyPattern" : {
+					"city" : 1
+				},
+				"indexName" : "city_1",
+				"isMultiKey" : false,
+				"direction" : "forward",
+				"indexBounds" : {
+					"city" : [
+						"[\"FLAGSTAFF\", \"FLAGSTAFF\"]"
+					]
+				}
+			}
+		},
+		"rejectedPlans" : [ ]
+	},
+	"serverInfo" : {
+		"host" : "quickstart.cloudera",
+		"port" : 27017,
+		"version" : "3.0.6",
+		"gitVersion" : "1ef45a23a4c5e3480ac919b28afcba3c615488f2"
+	},
+	"ok" : 1
+}
+
+#4c
+When using explain() winningPlan has a different output. 4b uses "stage" : "COLLSCAN", 4c "stage" : "FETCH",
+
+#5a
+> db.zips.count()
+29353
+#5b
+> db.zips.find({"state":"MA"}).count()
+474
+#5c
+> db.zips.distinct("state")
+[
+	"MA",
+	"RI",
+	"NH",
+	"ME",
+	"VT",
+	"CT",
+	"NY",
+	"NJ",
+	"PA",
+	"DE",
+	"DC",
+	"MD",
+	"VA",
+	"WV",
+	"NC",
+	"SC",
+	"GA",
+	"FL",
+	"AL",
+	"TN",
+	"MS",
+	"KY",
+	"OH",
+	"IN",
+	"MI",
+	"IA",
+	"WI",
+	"MN",
+	"SD",
+	"ND",
+	"MT",
+	"IL",
+	"MO",
+	"KS",
+	"NE",
+	"LA",
+	"AR",
+	"OK",
+	"TX",
+	"CO",
+	"WY",
+	"ID",
+	"UT",
+	"AZ",
+	"NM",
+	"NV",
+	"CA",
+	"HI",
+	"OR",
+	"WA",
+	"AK"
+]
+#5d
+> db.zips.distinct("state").sort()
+[
+	"AK",
+	"AL",
+	"AR",
+	"AZ",
+	"CA",
+	"CO",
+	"CT",
+	"DC",
+	"DE",
+	"FL",
+	"GA",
+	"HI",
+	"IA",
+	"ID",
+	"IL",
+	"IN",
+	"KS",
+	"KY",
+	"LA",
+	"MA",
+	"MD",
+	"ME",
+	"MI",
+	"MN",
+	"MO",
+	"MS",
+	"MT",
+	"NC",
+	"ND",
+	"NE",
+	"NH",
+	"NJ",
+	"NM",
+	"NV",
+	"NY",
+	"OH",
+	"OK",
+	"OR",
+	"PA",
+	"RI",
+	"SC",
+	"SD",
+	"TN",
+	"TX",
+	"UT",
+	"VA",
+	"VT",
+	"WA",
+	"WI",
+	"WV",
+	"WY"
+]
+#5e
+db.zips.find({}, {state:1, _id:0}).count()
+
+#5f
+> db.zips.find({pop: {$lt: 50} }).count()
+356
+
+#5g
+> db.zips.find({pop:{$lt: 50}},{city:1,_id:0})
+{ "city" : "BUCKLAND" }
+{ "city" : "CAMBRIDGE" }
+{ "city" : "CLAYVILLE" }
+{ "city" : "EAST HEBRON" }
+{ "city" : "WEST NOTTINGHAM" }
+{ "city" : "BUSTINS ISLAND" }
+{ "city" : "CUSHING ISLAND" }
+{ "city" : "FRYE" }
+{ "city" : "RUMFORD POINT" }
+{ "city" : "CUSHING" }
+{ "city" : "SQUIRREL ISLAND" }
+{ "city" : "ISLE AU HAUT" }
+{ "city" : "SARGENTVILLE" }
+{ "city" : "TAFTSVILLE" }
+{ "city" : "UNIV OF VERMONT" }
+{ "city" : "AVERILL" }
+{ "city" : "EAST KILLINGLY" }
+{ "city" : "TETERBORO" }
+{ "city" : "LEESBURG" }
+{ "city" : "IMLAYSTOWN" }
+Type "it" for more
+
+#6
+> db.zips.ensureIndex({"loc": "2d"})
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 2,
+	"numIndexesAfter" : 3,
+	"ok" : 1
+}
+> db.zips.find({city: "FLAGSTAFF"})
+{ "_id" : "86001", "city" : "FLAGSTAFF", "loc" : [ -111.661979, 35.185911 ], "pop" : 30174, "state" : "AZ" }
+{ "_id" : "86004", "city" : "FLAGSTAFF", "loc" : [ -111.574109, 35.225736 ], "pop" : 26878, "state" : "AZ" }
+
+db.zips.find(
+   {
+     loc:
+       { $near :
+          {
+            $geometry: { type: "Point",  coordinates: [ -111.661979, 35.185911 ] },
+            $maxDistance: 50000
+          }
+       }
+   }
+)
+
+
+###Assignment2
+
+
