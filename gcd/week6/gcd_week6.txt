@@ -1,0 +1,50 @@
+##activity 1
+
+#activity 2.0
+hadoop fs -put GCD-Week-6-access_log.txt 
+
+#activity 2.1
+>>> text_file = sc.textFile("../cloudera/GCD-Week-6-access_log.txt")
+>>> assets = text_file.filter(lambda line: "/assets/js/the-associates.js" in line)
+>>> assets.count()
+2456 
+
+#activity 2.2
+>>> ipAddress = text_file.filter(lambda line: "10.99.99.186" in line)
+>>> ipAddress.count()
+6            
+
+#activity 2.3 
+counts = text_file.flatMap(lambda line: line.split(" ")) \
+             .map(lambda word: (word, 1)) \
+             .reduceByKey(lambda a, b: a + b)
+>>> counts.takeOrdered(20, lambda (key, value): -1 * value)                                       
+[(u'-', 9280082), (u'"GET', 4430806), (u'HTTP/1.1"', 4204203), (u'200', 3962901), (u'-0700]', 3121565), (u'-0800]', 1356278), (u'304', 327007), (u'HTTP/1.0"', 273636), (u'10.216.113.172', 158614), (u'/assets/css/combined.css', 117348), (u'/assets/js/javascript_combined.js', 106818), (u'/', 99303), (u'/assets/img/home-logo.png', 98744), (u'20404', 97657), (u'/assets/css/printstyles.css', 93158), (u'/images/filmpics/0000/3695/Pelican_Blood_2D_Pack.jpg', 91933), (u'540', 87412), (u'3892', 87151), (u'444923', 83689), (u'404', 81898)]
+>>>
+
+(u'/assets/css/combined.css', 117348)
+
+
+##activity 2
+hadoop fs -put GutenbergSmall/
+>>> text_file = sc.textFile("../cloudera/GutenbergSmall/*")
+>>> counts = text_file.flatMap(lambda line: line.split(" ")) \
+...              .map(lambda word: (word, 1)) \
+...              .reduceByKey(lambda a, b: a + b)
+>>> counts.takeOrdered(20, lambda (key, value): -1 * value)  
+[(u'the', 44296), (u'', 38790), (u'of', 23835), (u'and', 20476), (u'to', 18147), (u'a', 16316), (u'I', 12981), (u'in', 10014), (u'was', 9868), (u'that', 8808), (u'had', 6240), (u'he', 6075), (u'it', 5795), (u'his', 5623), (u'with', 5579), (u'as', 5310), (u'we', 4930), (u'for', 4842), (u'my', 4309), (u'at', 4269)]
+>>> counts.saveAsTextFile("hdfs://quickstart.cloudera:8020/cloudera")
+
+##activity 3
+#RDD
+text_file = sc.textFile("../cloudera/GCD-Week-6-access_log.txt")
+
+#Transformation
+>>> text_file.distinct()
+PythonRDD[32] at RDD at PythonRDD.scala:42
+
+#Action
+>>> text_file.first()
+u'10.223.157.186 - - [15/Jul/2009:14:58:59 -0700] "GET / HTTP/1.1" 403 202'
+
+
