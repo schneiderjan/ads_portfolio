@@ -16,6 +16,8 @@ datasource = dict((file_name, file_contents(file_name)) for file_name in all_fil
 def mapfn(k, v):
     from stopwords import allStopWords
     for w in v.split():
+		w = re.sub(r'[^\w\s]','',w)
+		w = w.lower()
         if w in allStopWords or len(w)==1:
             yield w, 0
         else:

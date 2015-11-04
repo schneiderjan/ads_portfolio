@@ -47,7 +47,7 @@ __ACTIVITY3__
 
 
 -1-
-
+INSERT OVERWRITE DIRECTORY 'gcd_week4/3_1' 
 SELECT gender, COUNT(gender) AS totalUsersGender FROM user GROUP BY gender;
 
 F	273
@@ -56,7 +56,7 @@ M	670
 
 
 -2-
-
+INSERT OVERWRITE DIRECTORY 'gcd_week4/3_2' 
 SELECT occupation, SUM(CASE WHEN gender ='M' THEN 1 ELSE 0 END) AS totalMaleOccupations, SUM(CASE WHEN gender ='M' THEN 1 ELSE 0 END) AS totalFemaleOccupations
 FROM user GROUP BY occupation;
 
@@ -104,7 +104,7 @@ writer	26	26
 
 
 -3-
-
+INSERT OVERWRITE DIRECTORY 'gcd_week4/3_3' 
 SELECT m.movie_title, SUM(d.rating) AS avgrat, COUNT(d.rating) AS counter
  from ml_data d
  JOIN ml_item m ON(d.item_id = m.movie_id)
@@ -120,15 +120,28 @@ Star Wars (1977)	641	151
 
 __ACTIVITY4__
 
-The wont give an accurate example in this.
-
+MAX doesn't take the number of occurences into account.
+AVG doesn't take margins well into account.
+This yields that SUM is most likely the accurate way
 
 
 __ACTIVITY5__
 
+from imdb:
 How do you calculate the vote displayed on a film or show page?
 We take all the individual
  votes cast by IMDb registered users and use them to calculate a single rating. We don't use the
  arithmetic mean of the votes (although we do display the mean and average votes on the votes breakdown)
  -- the rating displayed on a film's page is a weighted average. To display the detailed votes breakdown,
  click on the 'More' link located below the existing user rating. For an example, see here.
+
+source: https://www.quora.com/How-does-IMDbs-rating-system-work
+IMDB allows weighted vote averages rather than raw data averages. Users are allowed to rate a movie on a scale of 1 to 10, and the total is converted into a weighted mean rating. Several filters are applied to the raw data to remove and reduce vote rigging.
+
+Here is how it works :
+
+weighted rating  = (v / (v+m)) × R + (m / (v+m)) × C where:
+R = average for the movie (mean) = (Rating)
+v = number of votes for the movie = (votes)
+m = minimum votes required to be listed in the Top 50 (currently 25000)
+C = the mean vote across the whole report (currently 7.0)
