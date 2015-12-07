@@ -1,0 +1,86 @@
+body {
+	background-image:url(../images/grey_wash_wall.png);
+	background-color: #EBE8E4;
+	color: #222;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande",sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+}
+
+li { list-style-type:circle;}
+	
+h1, h2, h3 {text-align:center;}
+
+a.main:link {color:#000000;text-decoration:none;}      
+a.main:visited {color:#888888;text-decoration:none;} 
+a.main:hover {color:#00F;text-decoration:underline;}  
+a.main:active {color:#0000FF;text-decoration:underline;} 
+
+img{ border-radius:4px;
+	margin: 20px 20px 20px 20px;}
+	
+textarea {resize: none;}
+
+.profilepic {
+	width:126px;
+	height:161px;
+	margin: -100px 30px 15px 18px;
+}
+
+.float-right {
+	float: right;
+	display: inline;
+}
+
+.float-left {
+	float: left;
+	display: inline;
+}
+
+.clearfix:before {
+	content: "";
+	display:table;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.center{text-align: center;}
+	
+.move-center{
+	margin-left:235px;
+	margin-right:auto;
+}
+
+.arrow {
+        border-top: 4px solid #aaa;
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+        content: "";
+        display: inline-block;
+        height: 0;
+        width: 0;
+        vertical-align: middle;
+  
+        -webkit-transition: color 0.1s linear;
+     	  -moz-transition: color 0.1s linear;
+       	-o-transition: color 0.1s linear;
+          transition: color 0.1s linear;
+}
+
+.extra-padding{
+	padding: 0 100px 0 100px;
+}
+
+
+
+
+
+
+
+
