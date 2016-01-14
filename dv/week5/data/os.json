@@ -1,0 +1,275 @@
+[
+  {
+    "Date":"2008-12-01",
+    "Mobile Operating System":"iOS",
+    "Percent of Usage":32.56,
+    "GroupDate":0,
+    "GroupOS":0
+  },
+  {
+    "Date":"2008-12-01",
+    "Mobile Operating System":"SymbianOS",
+    "Percent of Usage":42.02,
+    "GroupDate":0,
+    "GroupOS":1
+  },
+  {
+    "Date":"2008-12-01",
+    "Mobile Operating System":"Unknown",
+    "Percent of Usage":16,
+    "GroupDate":0,
+    "GroupOS":2
+  },
+  {
+    "Date":"2008-12-01",
+    "Mobile Operating System":"Linux",
+    "Percent of Usage":1.66,
+    "GroupDate":0,
+    "GroupOS":3
+  },
+  {
+    "Date":"2008-12-01",
+    "Mobile Operating System":"Playstation",
+    "Percent of Usage":4.47,
+    "GroupDate":0,
+    "GroupOS":4
+  },
+  {
+    "Date":"2008-12-01",
+    "Mobile Operating System":"WinCE",
+    "Percent of Usage":2.22,
+    "GroupDate":0,
+    "GroupOS":5
+  },
+  {
+    "Date":"2008-12-01",
+    "Mobile Operating System":"Other",
+    "Percent of Usage":1.07,
+    "GroupDate":0,
+    "GroupOS":6
+  },
+  {
+    "Date":"2009-01-01",
+    "Mobile Operating System":"Android",
+    "Percent of Usage":0.66,
+    "GroupDate":1,
+    "GroupOS":7
+  },
+  {
+    "Date":"2009-01-01",
+    "Mobile Operating System":"iOS",
+    "Percent of Usage":35.56,
+    "GroupDate":1,
+    "GroupOS":0
+  },
+  {
+    "Date":"2009-01-01",
+    "Mobile Operating System":"SymbianOS",
+    "Percent of Usage":39.31,
+    "GroupDate":1,
+    "GroupOS":1
+  },
+  {
+    "Date":"2009-01-01",
+    "Mobile Operating System":"BlackBerry OS",
+    "Percent of Usage":0.95,
+    "GroupDate":1,
+    "GroupOS":8
+  },
+  {
+    "Date":"2009-01-01",
+    "Mobile Operating System":"Unknown",
+    "Percent of Usage":14.73,
+    "GroupDate":1,
+    "GroupOS":2
+  },
+  {
+    "Date":"2009-01-01",
+    "Mobile Operating System":"Linux",
+    "Percent of Usage":1.24,
+    "GroupDate":1,
+    "GroupOS":3
+  },
+  {
+    "Date":"2009-01-01",
+    "Mobile Operating System":"Playstation",
+    "Percent of Usage":4.33,
+    "GroupDate":1,
+    "GroupOS":4
+  },
+  {
+    "Date":"2009-01-01",
+    "Mobile Operating System":"WinCE",
+    "Percent of Usage":2.1,
+    "GroupDate":1,
+    "GroupOS":5
+  },
+  {
+    "Date":"2009-01-01",
+    "Mobile Operating System":"Other",
+    "Percent of Usage":1.12,
+    "GroupDate":1,
+    "GroupOS":6
+  },
+  {
+    "Date":"2009-02-01",
+    "Mobile Operating System":"Android",
+    "Percent of Usage":2.06,
+    "GroupDate":2,
+    "GroupOS":7
+  },
+  {
+    "Date":"2009-02-01",
+    "Mobile Operating System":"iOS",
+    "Percent of Usage":36.43,
+    "GroupDate":2,
+    "GroupOS":0
+  },
+  {
+    "Date":"2009-02-01",
+    "Mobile Operating System":"SymbianOS",
+    "Percent of Usage":37.04,
+    "GroupDate":2,
+    "GroupOS":1
+  },
+  {
+    "Date":"2009-02-01",
+    "Mobile Operating System":"BlackBerry OS",
+    "Percent of Usage":5.57,
+    "GroupDate":2,
+    "GroupOS":8
+  },
+  {
+    "Date":"2009-02-01",
+    "Mobile Operating System":"Unknown",
+    "Percent of Usage":11.87,
+    "GroupDate":2,
+    "GroupOS":2
+  },
+  {
+    "Date":"2009-02-01",
+    "Mobile Operating System":"Playstation",
+    "Percent of Usage":3.58,
+    "GroupDate":2,
+    "GroupOS":4
+  },
+  {
+    "Date":"2009-02-01",
+    "Mobile Operating System":"WinCE",
+    "Percent of Usage":1.94,
+    "GroupDate":2,
+    "GroupOS":5
+  },
+  {
+    "Date":"2009-02-01",
+    "Mobile Operating System":"Other",
+    "Percent of Usage":1.52,
+    "GroupDate":2,
+    "GroupOS":6
+  },
+  {
+    "Date":"2009-03-01",
+    "Mobile Operating System":"Android",
+    "Percent of Usage":2.18,
+    "GroupDate":3,
+    "GroupOS":7
+  },
+  {
+    "Date":"2009-03-01",
+    "Mobile Operating System":"iOS",
+    "Percent of Usage":39.6,
+    "GroupDate":3,
+    "GroupOS":0
+  },
+  {
+    "Date":"2009-03-01",
+    "Mobile Operating System":"SymbianOS",
+    "Percent of Usage":35.12,
+    "GroupDate":3,
+    "GroupOS":1
+  },
+  {
+    "Date":"2009-03-01",
+    "Mobile Operating System":"BlackBerry OS",
+    "Percent of Usage":5.97,
+    "GroupDate":3,
+    "GroupOS":8
+  },
+  {
+    "Date":"2009-03-01",
+    "Mobile Operating System":"Unknown",
+    "Percent of Usage":11.29,
+    "GroupDate":3,
+    "GroupOS":2
+  },
+  {
+    "Date":"2009-03-01",
+    "Mobile Operating System":"Playstation",
+    "Percent of Usage":3.18,
+    "GroupDate":3,
+    "GroupOS":4
+  },
+  {
+    "Date":"2009-03-01",
+    "Mobile Operating System":"WinCE",
+    "Percent of Usage":1.7,
+    "GroupDate":3,
+    "GroupOS":5
+  },
+  {
+    "Date":"2009-03-01",
+    "Mobile Operating System":"Other",
+    "Percent of Usage":0.95,
+    "GroupDate":3,
+    "GroupOS":6
+  },
+  {
+    "Date":"2009-04-01",
+    "Mobile Operating System":"Android",
+    "Percent of Usage":2.02,
+    "GroupDate":4,
+    "GroupOS":7
+  },
+  {
+    "Date":"2009-04-01",
+    "Mobile Operating System":"iOS",
+    "Percent of Usage":41.91,
+    "GroupDate":4,
+    "GroupOS":0
+  },
+  {
+    "Date":"2009-04-01",
+    "Mobile Operating System":"SymbianOS",
+    "Percent of Usage":34.25,
+    "GroupDate":4,
+    "GroupOS":1
+  },
+  {
+    "Date":"2009-04-01",
+    "Mobile Operating System":"BlackBerry OS",
+    "Percent of Usage":6.39,
+    "GroupDate":4,
+    "GroupOS":8
+  },
+  {
+    "Date":"2009-04-01",
+    "Mobile Operating System":"Unknown",
+    "Percent of Usage":10.2,
+    "GroupDate":4,
+    "GroupOS":2
+  },
+  {
+    "Date":"2009-04-01",
+    "Mobile Operating System":"Playstation",
+    "Percent of Usage":2.85,
+    "GroupDate":4,
+    "GroupOS":4
+  },
+  {
+    "Date":"2009-04-01",
+    "Mobile Operating System":"WinCE",
+    "Percent of Usage":1.55,
+    "GroupDate":4,
+    "GroupOS":5
+  }
+]
