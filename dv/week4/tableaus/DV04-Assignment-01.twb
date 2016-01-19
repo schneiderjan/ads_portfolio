@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<workbook source-platform='win' version='9.0' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <!-- build 9000.15.0820.1222                                -->
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Sheet1 (dv04-01)' inline='true' name='excel-direct.42384.886146793979' version='9.0'>
+      <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='D:\Code\GitHub\ads_portfolio\dv\week4\resources\dv04-01.xlsx' password='' server='' username='' validate='no'>
+        <relation name='Sheet1$' table='[Sheet1$]' type='table'>
+          <columns header='yes' outcome='6'>
+            <column datatype='string' name='Company' ordinal='0' />
+            <column datatype='integer' name='Total mobile users in mio.' ordinal='1' />
+            <column datatype='real' name='Total active users in mio.' ordinal='2' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>Company</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Company]</local-name>
+            <parent-name>[Sheet1$]</parent-name>
+            <remote-alias>Company</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDE_RDE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Total mobile users in mio.</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Total mobile users in mio.]</local-name>
+            <parent-name>[Sheet1$]</parent-name>
+            <remote-alias>Total mobile users in mio.</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Total active users in mio.</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Total active users in mio.]</local-name>
+            <parent-name>[Sheet1$]</parent-name>
+            <remote-alias>Total active users in mio.</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name></remote-name>
+            <remote-type>0</remote-type>
+            <parent-name>[Sheet1$]</parent-name>
+            <remote-alias></remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='case group company' datatype='integer' name='[Calculation_0230115211817092]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Company]&#13;&#10;WHEN &quot;Facebook&quot; THEN 1&#13;&#10;WHEN &quot;Linkedin&quot; THEN 2&#13;&#10;WHEN &quot;Pinterest&quot; THEN 3&#13;&#10;WHEN &quot;Twitter&quot; THEN 4&#13;&#10;ELSE 5&#13;&#10;END' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Active users' datatype='real' name='[Total active users in mio.]' role='measure' type='quantitative'>
+      </column>
+      <column caption='Total users' datatype='integer' name='[Total mobile users in mio.]' role='measure' type='quantitative'>
+      </column>
+      <column-instance column='[Total active users in mio.]' derivation='Sum' name='[sum:Total active users in mio.:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Total mobile users in mio.]' derivation='Sum' name='[sum:Total mobile users in mio.:qk]' pivot='key' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.5' measure-ordering='alphabetic' measure-percentage='0.4' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#1f77b4'>
+              <bucket>&quot;[excel-direct.42384.886146793979].[sum:Total active users in mio.:qk]&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;[excel-direct.42384.886146793979]&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;[excel-direct.42384.886146793979].[sum:Total mobile users in mio.:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Germany&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet1 (dv04-01)' name='excel-direct.42384.886146793979' />
+          </datasources>
+          <datasource-dependencies datasource='excel-direct.42384.886146793979'>
+            <column datatype='string' name='[Company]' role='dimension' type='nominal'>
+            </column>
+            <column caption='Active users' datatype='real' name='[Total active users in mio.]' role='measure' type='quantitative'>
+            </column>
+            <column caption='Total users' datatype='integer' name='[Total mobile users in mio.]' role='measure' type='quantitative'>
+            </column>
+            <column-instance column='[Company]' derivation='None' name='[none:Company:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Total active users in mio.]' derivation='Sum' name='[sum:Total active users in mio.:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Total mobile users in mio.]' derivation='Sum' name='[sum:Total mobile users in mio.:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[excel-direct.42384.886146793979].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[excel-direct.42384.886146793979].[sum:Total mobile users in mio.:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[excel-direct.42384.886146793979].[sum:Total active users in mio.:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <sort class='manual' column='[excel-direct.42384.886146793979].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[excel-direct.42384.886146793979].[sum:Total mobile users in mio.:qk]&quot;</bucket>
+              <bucket>&quot;[excel-direct.42384.886146793979].[sum:Total active users in mio.:qk]&quot;</bucket>
+            </dictionary>
+          </sort>
+          <slices>
+            <column>[excel-direct.42384.886146793979].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[excel-direct.42384.886146793979].[Multiple Values]' field-type='quantitative' max='840.0' min='0.0' range-type='fixed' scope='rows' type='space' />
+            <format attr='title' class='0' field='[excel-direct.42384.886146793979].[Multiple Values]' scope='rows' value='Total mobile users in million' />
+            <format attr='subtitle' class='0' field='[excel-direct.42384.886146793979].[Multiple Values]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[excel-direct.42384.886146793979].[Multiple Values]' scope='rows' value='true' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[excel-direct.42384.886146793979].[none:Company:nk]' />
+              <text column='[excel-direct.42384.886146793979].[Multiple Values]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='wrap' value='auto' />
+                <format attr='text-align' value='center' />
+                <format attr='text-orientation' value='0' />
+                <format attr='vertical-align' value='top' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[excel-direct.42384.886146793979].[Multiple Values]</rows>
+        <cols>([excel-direct.42384.886146793979].[none:Company:nk] / [excel-direct.42384.886146793979].[:Measure Names])</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows>
+    <window class='schema' source-height='-1' />
+    <window auto-hidden='0' class='worksheet' maximized='1' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+            <card pane-specification-id='0' param='[excel-direct.42384.886146793979].[none:Company:nk]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <highlight>
+        <color-one-way>
+          <field>[excel-direct.42384.886146793979].[:Measure Names]</field>
+          <field>[excel-direct.42384.886146793979].[none:Company:nk]</field>
+        </color-one-way>
+      </highlight>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+      TGZo+n9SngQQJRwgDgAAAABJRU5ErkJggg==
+    </thumbnail>
+  </thumbnails>
+</workbook>

@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<workbook source-platform='win' version='9.0' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <!-- build 9000.15.0820.1222                                -->
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Sheet1 (dv04_02_deathrate)' inline='true' name='excel-direct.42388.866976331017' version='9.0'>
+      <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='D:\Code\GitHub\ads_portfolio\dv\week4\resources\dv04_02_deathrate.xlsx' password='' server='' username='' validate='no'>
+        <relation name='Sheet1$' table='[Sheet1$]' type='table'>
+          <columns header='yes' outcome='6'>
+            <column datatype='string' name='District' ordinal='0' />
+            <column datatype='integer' name='Death rate per 100000' ordinal='1' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>District</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[District]</local-name>
+            <parent-name>[Sheet1$]</parent-name>
+            <remote-alias>District</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDE_RDE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Death rate per 100000</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Death rate per 100000]</local-name>
+            <parent-name>[Sheet1$]</parent-name>
+            <remote-alias>Death rate per 100000</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name></remote-name>
+            <remote-type>0</remote-type>
+            <parent-name>[Sheet1$]</parent-name>
+            <remote-alias></remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.5' measure-ordering='alphabetic' measure-percentage='0.4' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Germany&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet1 (dv04_02_deathrate)' name='excel-direct.42388.866976331017' />
+          </datasources>
+          <datasource-dependencies datasource='excel-direct.42388.866976331017'>
+            <column datatype='integer' name='[Death rate per 100000]' role='measure' type='quantitative'>
+            </column>
+            <column datatype='string' name='[District]' role='dimension' type='nominal'>
+            </column>
+            <column-instance column='[District]' derivation='None' name='[none:District:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Death rate per 100000]' derivation='Sum' name='[sum:Death rate per 100000:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <sort class='computed' column='[excel-direct.42388.866976331017].[none:District:nk]' direction='DESC' using='[excel-direct.42388.866976331017].[sum:Death rate per 100000:qk]'>
+          </sort>
+          <aggregation value='true' />
+        </view>
+        <style>
+        </style>
+        <panes>
+          <pane id='1'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[excel-direct.42388.866976331017].[sum:Death rate per 100000:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+                <format attr='vertical-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[excel-direct.42388.866976331017].[sum:Death rate per 100000:qk]</rows>
+        <cols>[excel-direct.42388.866976331017].[none:District:nk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows>
+    <window class='schema' source-height='-1' />
+    <window auto-hidden='0' class='worksheet' maximized='1' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <highlight>
+        <color-one-way>
+          <field>[excel-direct.42388.866976331017].[none:District:nk]</field>
+        </color-one-way>
+      </highlight>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='161'>
+      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
+      RK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>

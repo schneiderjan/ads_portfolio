@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<workbook source-platform='win' version='9.0' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <!-- build 9000.15.0820.1222                                -->
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Sheet1 (dv02_02_research_and_development_investments)' inline='true' name='excel-direct.42386.745508101849' version='9.0'>
+      <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='D:\Code\GitHub\ads_portfolio\dv\week4\resources\dv02_02_research_and_development_investments.xlsx' password='' server='' username='' validate='no'>
+        <relation name='Sheet1$' table='[Sheet1$]' type='table'>
+          <columns header='yes' outcome='6'>
+            <column datatype='string' name='Institution' ordinal='0' />
+            <column datatype='real' name='research and development investments in billion' ordinal='1' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>Institution</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Institution]</local-name>
+            <parent-name>[Sheet1$]</parent-name>
+            <remote-alias>Institution</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDE_RDE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>research and development investments in billion</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[research and development investments in billion]</local-name>
+            <parent-name>[Sheet1$]</parent-name>
+            <remote-alias>research and development investments in billion</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name></remote-name>
+            <remote-type>0</remote-type>
+            <parent-name>[Sheet1$]</parent-name>
+            <remote-alias></remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[Institution]' role='dimension' type='nominal'>
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Research And Development Investments In Billion' datatype='real' name='[research and development investments in billion]' role='measure' type='quantitative'>
+      </column>
+      <column-instance column='[Institution]' derivation='None' name='[none:Institution:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.5' measure-ordering='alphabetic' measure-percentage='0.4' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Institution:nk]' type='palette'>
+            <map to='#1f77b4'>
+              <bucket>&quot;IBM&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;US electrical-power utilities&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;Pfizer&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Germany&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Research and development invesments in billion</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet1 (dv02_02_research_and_development_investments)' name='excel-direct.42386.745508101849' />
+          </datasources>
+          <datasource-dependencies datasource='excel-direct.42386.745508101849'>
+            <column datatype='string' name='[Institution]' role='dimension' type='nominal'>
+            </column>
+            <column-instance column='[Institution]' derivation='None' name='[none:Institution:nk]' pivot='key' type='nominal' />
+            <column caption='Research And Development Investments In Billion' datatype='real' name='[research and development investments in billion]' role='measure' type='quantitative'>
+            </column>
+            <column-instance column='[research and development investments in billion]' derivation='Sum' name='[sum:research and development investments in billion:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <sort class='computed' column='[excel-direct.42386.745508101849].[none:Institution:nk]' direction='DESC' using='[excel-direct.42386.745508101849].[sum:research and development investments in billion:qk]'>
+          </sort>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[excel-direct.42386.745508101849].[sum:research and development investments in billion:qk]' field-type='quantitative' major-origin='0.0' major-spacing='1.0' minor-origin='0.0' minor-spacing='0.5' scope='rows' type='space' />
+            <format attr='subtitle' class='0' field='[excel-direct.42386.745508101849].[sum:research and development investments in billion:qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[excel-direct.42386.745508101849].[sum:research and development investments in billion:qk]' scope='rows' value='true' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[excel-direct.42386.745508101849].[sum:research and development investments in billion:qk]' value='n#,##0.0;-#,##0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[excel-direct.42386.745508101849].[none:Institution:nk]' />
+              <text column='[excel-direct.42386.745508101849].[sum:research and development investments in billion:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+                <format attr='vertical-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[excel-direct.42386.745508101849].[sum:research and development investments in billion:qk]</rows>
+        <cols>[excel-direct.42386.745508101849].[none:Institution:nk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows>
+    <window class='schema' source-height='-1' />
+    <window auto-hidden='0' class='worksheet' maximized='1' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='0' param='[excel-direct.42386.745508101849].[none:Institution:nk]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <highlight>
+        <color-one-way>
+          <field>[excel-direct.42386.745508101849].[none:Institution:nk]</field>
+        </color-one-way>
+      </highlight>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+      /nvfwYQYAAAAAElFTkSuQmCC
+    </thumbnail>
+  </thumbnails>
+</workbook>
